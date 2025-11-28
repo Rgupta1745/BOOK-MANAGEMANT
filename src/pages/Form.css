@@ -1,0 +1,78 @@
+
+.box{
+  width:100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+.addbook-form{
+  width: 400px;
+}
+
+form {
+  width: 500px;
+  /* margin: 50px auto; */
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #e9f0ef;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+form h3,h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+  margin-top: -9px;
+}
+
+form input:focus {
+  border-color: #6a5acd;
+  box-shadow: 0 0 5px rgba(106, 90, 205, 0.3);
+
+}
+
+form button {
+  padding: 12px;
+  background: #1f52c0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: #262149;
+}
+
+form span {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 5px;
+  color: #555;
+}
+.errors {
+  color: red;
+  font-size: 12px;
+  margin-top: -14px;
+  opacity: 50%;
+  text-align: left;
+}
+
+label{
+  color: #555;
+}
