@@ -8,7 +8,7 @@ const Navbar = () => {
         My Book App
       </Link>
 
-      <ul className="navbar-nav ms-auto p-3 flex gap-14" >
+      <ul className="navbar-nav ms-auto p-3 flex gap-4" >
         <li className="nav-item">
           <Link to="/" className="nav-link">
             Home

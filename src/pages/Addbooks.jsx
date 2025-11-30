@@ -34,7 +34,8 @@ const Addbooks = () => {
       newErrors.bookname="Enter Proper Book Name "
      }
 
-     const ValidBookImage =/^https?:\/\/.*\.(jpg|jpeg|png|gif|webp|svg)$/i;
+     const ValidBookImage =/[-a-zA-Z0-9@:%_+.~#?&//=]*\.(png|jpg|jpeg|gif|webp|svg|bmp|tif|tiff)(\?.*)?$/i
+;
      if(!ValidBookImage.test(bookImage)){
       newErrors.bookImage="Enter the url of the image"
      }
@@ -56,11 +57,12 @@ const Addbooks = () => {
     e.preventDefault();
     const validateErrors = formValidation();
     setErrors(validateErrors);
-    if (validateErrors.length === 0) {
-      const exitingUser = JSON.parse(localStorage.getItem("userData")) || [];
-      const updatedUser = [...exitingUser, formData];
-      localStorage.setItem("userData", JSON.stringify(updatedUser));
+    if (Object.keys(validateErrors).length === 0) {
+      let existingUser = JSON.parse(localStorage.getItem("bookData")) || [];
+      const updatedUser = [...existingUser, formData];
+      localStorage.setItem("bookData", JSON.stringify(updatedUser));
       toast.success("Book Added Successfully");
+      <BookCart category={formData.category}  img={formData.bookImage} bookname={formData.bookname} authorName={formData.authorname} text={formData.bookDescription}></BookCart>
 
       setformData({
         bookname: "",
@@ -85,24 +87,23 @@ const Addbooks = () => {
           value={formData.bookname}
           name="bookname"
           onChange={changeHandler}
-          bookname={value}
+          // bookname={value}
         />
         {errors.bookname && <span className="errors">{errors.bookname}</span>}
 
 
         {/* Book Image  */}
         <label>Book Image:</label>
-        <input type="url" name="bookImage" onChange={changeHandler} value={formData.bookImage} img={value} />
+        <input type="url" name="bookImage" onChange={changeHandler} value={formData.bookImage}  />
         {errors.bookImage && <span className="errors">{errors.bookImage}</span>}
 
         {/* Author Name */}
         <label>Author Name:</label>
         <input
           type="text"
-          value={formData.bookImage}
-          name="bookImage"
+          value={formData.authorname}
+          name="authorname"
           onChange={changeHandler}
-          authorName ={value}
         />
         {errors.authorname && <span className="errors">{errors.authorname}</span>}
 
@@ -112,7 +113,7 @@ const Addbooks = () => {
           value={formData.bookDescription}
           name="bookDescription"
           onChange={changeHandler}
-          text={value}
+          style={{border:"2px solid gray", opacity:"0.5px"}}
         ></textarea>
         {errors.bookDescription && <span className="errors">{errors.bookDescription}</span>}
 
@@ -123,7 +124,6 @@ const Addbooks = () => {
           type="radio"
           name="category"
           onChange={changeHandler}
-          category={value}
          >
           <option value="Select Category ">--Select Category--</option>
           <option value="Fictional">Fictional</option>

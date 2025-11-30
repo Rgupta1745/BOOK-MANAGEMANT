@@ -43,6 +43,9 @@ const Login = () => {
     const validateErrors = formValidation();
     setErrors(validateErrors);
     if (Object.keys(validateErrors).length === 0) {
+      const exitingUser = JSON.parse(localStorage.getItem("loginData") )|| []
+      const updatedUser =[...exitingUser , formData ]
+      localStorage.setItem("loginData" , JSON.stringify(updatedUser))
       toast.success("You have been logged in successfullly ");
       setformData({
         username: "",

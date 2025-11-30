@@ -69,11 +69,11 @@ const Signup = () => {
     const validateErrors = formValidation();
     setErrors(validateErrors);    
     if (Object.keys(validateErrors).length === 0) {
-      let exitingUser = JSON.parse(localStorage.getItem("userData")) || []
+      let exitingUser = JSON.parse(localStorage.getItem("prsData")) || []
 
       const updateUser = [...exitingUser , formData]//phele se jo data hai vahi rhe or new data bhi add ho jye 
 
-      localStorage.setItem("userData",JSON.stringify(updateUser))
+      localStorage.setItem("prsData",JSON.stringify(updateUser))
 
       toast.success("Submit successfully ");
       setformData({
