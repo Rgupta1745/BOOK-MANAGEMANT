@@ -14,9 +14,14 @@ const Home = () => {
     setBooks((prev) => {
       return [...prev, newbook];
     });
-    setBooks(false);
+    setshowBooks(false);
   }
-
+  
+  function handleRemove(key){
+    let updatedBooks = books.filter((ele) => ele.key !== key )
+    localStorage.setItem("bookData" , JSON.stringify(updatedBooks))
+    //   setBooks(updatedBooks)
+  }
   useEffect(() => {
     localStorage.setItem("bookData", JSON.stringify(books));
   }, [books]);
@@ -37,15 +42,17 @@ const Home = () => {
         {books.length === 0 ? (
           <p>No Books Yet </p>
         ) : (
-          books.map((ele, index) => { 
+          books.map((ele ,index) => { 
             return (
               <BookCart
                 key={index}
+                // id={index}
                 category={ele.category}
                 img={ele.bookImage}
                 bookname={ele.bookname}
                 authorName={ele.authorname}
                 text={ele.bookDescription}
+                onRemove={handleRemove}
               />
             );
           })

@@ -45,10 +45,13 @@ const Addbooks = () => {
       newErrors.authorname="Enter Author name "
      }
 
-     if(bookDescription.trim().length < 10){
+     if(bookDescription.trim().length < 30){
       newErrors.bookDescription="Write minimum 30 words "
      }
 
+       if (!category || category === "") {
+      newErrors.category = "Please select a category.";
+    }
      return newErrors;
   }
 
@@ -65,6 +68,7 @@ const Addbooks = () => {
       <BookCart category={formData.category}  img={formData.bookImage} bookname={formData.bookname} authorName={formData.authorname} text={formData.bookDescription}></BookCart>
 
       setformData({
+        id:"",
         bookname: "",
         bookImage: "",
         authorname: "",
@@ -79,6 +83,7 @@ const Addbooks = () => {
     <div className="box">
       <ToastContainer />
       <form onSubmit={submitHandler} className="addbook-form">
+
 
         {/* //BookName */}
         <label>Book Name:</label>
